@@ -1,0 +1,120 @@
+---
+layout: layouts/base.njk
+eleventyExcludeFromCollections: true
+pagination:
+  data: staff.items
+  size: 1
+  alias: person
+permalink: "staff/{{ person.id }}/index.html"
+eleventyComputed:
+  title: "{{ person.name }} | Tubonamer Music"
+  description: "Book lessons with {{ person.name }} at Tubonamer Music."
+---
+
+{% set teaches = services.items | servicesByInstructor(person.id) %}
+<section class="page-head">
+    <p><a href="/staff/">Back to all instructors</a></p>
+    <h1>{{ person.name }}</h1>
+    <p class="muted">{{ person.title }}</p>
+</section>
+<section class="grid two profile-detail">
+    <article class="card">
+        <img src="{{ person.photo }}"
+             alt="Portrait illustration of {{ person.name }}"
+             width="400"
+             height="240" />
+        <p>{{ person.bio }}</p>
+        {% if teaches.length %}
+            <h2>Services with {{ person.name }}</h2>
+            <ul>
+                {% for service in teaches %}
+                    <li><a href="/services/{{ service.id }}/book/">{{ service.name }}</a> · ${{ (service.price / 100) | round(2) }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </article>
+    <article class="card">
+        <h2>Request a Lesson</h2>
+        <p class="muted">Send a booking request and we will follow up to confirm schedule and first lesson details.</p>
+        <form class="booking-form"
+              name="lesson-booking"
+              method="post"
+              action="/booking-thanks/"
+              data-netlify="true"
+              netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="lesson-booking" />
+            <input type="hidden" name="instructorId" value="{{ person.id }}" />
+            <input type="hidden" name="instructorName" value="{{ person.name }}" />
+            <p class="hidden-field">
+                <label>
+                    Do not fill this out if you are human:
+                    <input name="bot-field" />
+                </label>
+            </p>
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required />
+            <label for="serviceId">Service</label>
+            <select id="serviceId" name="serviceId" required>
+                <option value="">Select a service</option>
+                {% for service in teaches %}
+                    <option value="{{ service.id }}">{{ service.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="studentAge">Student Age</label>
+            <input id="studentAge"
+                   name="studentAge"
+                   type="text"
+                   placeholder="Example: 10, Teen, Adult" />
+            <label for="message">Anything we should know?</label>
+            <textarea id="message"
+                      name="message"
+                      rows="4"
+                      placeholder="Goals, experience, schedule preferences"></textarea>
+            <button type="submit" class="btn btn-primary">Send Booking Request</button>
+        </form>
+        {% if teaches.length %}
+            <h3>Pay now with Stripe</h3>
+            <p class="muted">Optional: prepay a first lesson using secure checkout.</p>
+            <div class="actions">
+                {% for service in teaches %}
+                    <button class="btn btn-secondary"
+                            data-stripe-checkout
+                            data-service-id="{{ service.id }}">Pay for {{ service.name }}</button>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </article>
+</section>
+<script>
+  async function checkoutWithStripe(serviceId) {
+    const response = await fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ serviceId })
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      alert(error.message || 'Unable to start checkout right now.');
+      return;
+    }
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url;
+      return;
+    }
+
+    alert('Checkout link was not returned by the payment server.');
+  }
+
+  document.querySelectorAll('[data-stripe-checkout]').forEach((button) => {
+    button.addEventListener('click', () => {
+      checkoutWithStripe(button.dataset.serviceId);
+    });
+  });
+</script>

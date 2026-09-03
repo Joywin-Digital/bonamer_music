@@ -1,0 +1,62 @@
+{
+  "items": [
+    {
+      "id": "piano-lessons",
+      "name": "Private Piano Lessons",
+      "description": "One-on-one piano lessons for kids, teens, and adults. Customized repertoire and practice plans.",
+      "duration": "45 or 60 minutes",
+      "price": 6500,
+      "currency": "usd",
+      "instructorIds": [
+        "john-lennon"
+      ],
+      "stripePriceHint": "Replace with STRIPE_PRICE_PIANO in production"
+    },
+    {
+      "id": "guitar-lessons",
+      "name": "Private Guitar Lessons",
+      "description": "Acoustic or electric guitar lessons focused on technique, chords, improvisation, and songs.",
+      "duration": "45 or 60 minutes",
+      "price": 6500,
+      "currency": "usd",
+      "instructorIds": [
+        "paul-mccartney"
+      ],
+      "stripePriceHint": "Replace with STRIPE_PRICE_GUITAR in production"
+    },
+    {
+      "id": "voice-coaching",
+      "name": "Voice Coaching",
+      "description": "Personalized vocal training for range, control, expression, and performance confidence.",
+      "duration": "45 minutes",
+      "price": 7000,
+      "currency": "usd",
+      "instructorIds": [],
+      "stripePriceHint": "Replace with STRIPE_PRICE_VOICE in production"
+    },
+    {
+      "id": "songwriting-lab",
+      "name": "Songwriting Lab",
+      "description": "Collaborative songwriting sessions for teens and adults, from concept to demo-ready songs.",
+      "duration": "60 minutes",
+      "price": 8000,
+      "currency": "usd",
+      "instructorIds": [
+        "paul-mccartney"
+      ],
+      "stripePriceHint": "Replace with STRIPE_PRICE_SONGWRITING in production"
+    },
+    {
+      "id": "tuba-lessons",
+      "name": "Private Tuba Lessons",
+      "description": "One-on-one tuba lessons focusing on technique, tone, and performance skills.",
+      "duration": "45 or 60 minutes",
+      "price": 6500,
+      "currency": "usd",
+      "instructorIds": [
+        "kurt-bonamer"
+      ],
+      "stripePriceHint": "Replace with STRIPE_PRICE_TUBA in production"
+    }
+  ]
+}

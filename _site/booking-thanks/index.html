@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Booking Request Sent | Tubonamer Music</title>
+        <meta name="description" content="Joyful, practical music instruction for all ages." />
+        <meta name="keywords"
+              content="music lessons, piano lessons, guitar lessons, voice coaching, songwriting" />
+        <link rel="stylesheet" href="/assets/styles.css" />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container header-wrap">
+                <a class="brand" href="/">
+                    <span class="brand-mark" aria-hidden="true">B</span>
+                    <span>Tubonamer Music</span>
+                </a>
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a href="/#about">About</a>
+                    <a href="/services/">Lessons</a>
+                    <a href="/staff/">Instructors</a>
+                    <a href="/#contact">Contact</a>
+                    <a class="nav-cta" href="/services/">Book a lesson</a>
+                </nav>
+            </div>
+        </header>
+        <main>
+            
+<section class="page-head">
+    <h1>Booking Request Sent</h1>
+    <p>Thank you. Your lesson request has been received, and a Tubonamer Music team member will reach out soon.</p>
+    <a class="btn btn-primary" href="/staff/">Back to Staff</a>
+</section>
+
+        </main>
+        <footer class="site-footer">
+            <div class="container footer-wrap">
+                <div>
+                    <a class="footer-brand" href="/">Tubonamer Music</a>
+                    <p>Joyful, practical music instruction for all ages.</p>
+                </div>
+                <div>
+                    <p>Your City</p>
+                    <p><a href="mailto:hello@bonamermusic.com">hello@bonamermusic.com</a></p>
+                    <p><a href="tel:(555)123-4567">(555) 123-4567</a></p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <a href="/services/">Lessons</a>
+                    <a href="/staff/">Instructors</a>
+                    <a href="/admin/">Client login</a>
+                </nav>
+            </div>
+        </footer>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <script>
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', (user) => {
+              if (!user && window.location.hash.startsWith('#invite_token=')) {
+                window.netlifyIdentity.open('signup');
+              }
+            });
+          }
+        </script>
+    </body>
+</html>

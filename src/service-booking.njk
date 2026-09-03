@@ -1,0 +1,121 @@
+---
+layout: layouts/base.njk
+eleventyExcludeFromCollections: true
+pagination:
+  data: services.items
+  size: 1
+  alias: service
+permalink: "services/{{ service.id }}/book/index.html"
+eleventyComputed:
+  title: "Book {{ service.name }} | Tubonamer Music"
+  description: "Book {{ service.name }} at Tubonamer Music."
+---
+
+{% set instructors = staff.items | staffByIds(service.instructorIds) %}
+<section class="page-head">
+    <p><a href="/services/">Back to all services</a></p>
+    <h1>Book {{ service.name }}</h1>
+    <p class="muted">{{ service.duration }} · ${{ (service.price / 100) | round(2) }}</p>
+    <p>{{ service.description }}</p>
+</section>
+<section class="grid two profile-detail">
+    <article class="card">
+        <h2>Instructors for this Service</h2>
+        {% if instructors.length %}
+            <ul>
+                {% for person in instructors %}
+                    <li><a href="/staff/{{ person.id }}/">{{ person.name }}</a> · {{ person.title }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No instructors are currently assigned to this service.</p>
+        {% endif %}
+    </article>
+    <article class="card">
+        <h2>Request This Service</h2>
+        <p class="muted">Service is preselected. Choose an instructor and we will follow up with schedule options.</p>
+        <form class="booking-form"
+              name="service-booking"
+              method="post"
+              action="/booking-thanks/"
+              data-netlify="true"
+              netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="service-booking" />
+            <input type="hidden" name="serviceId" value="{{ service.id }}" />
+            <input type="hidden" name="serviceName" value="{{ service.name }}" />
+            <p class="hidden-field">
+                <label>
+                    Do not fill this out if you are human:
+                    <input name="bot-field" />
+                </label>
+            </p>
+            <label for="serviceName">Selected Service</label>
+            <input id="serviceName" type="text" value="{{ service.name }}" readonly />
+            <label for="instructorId">Preferred Instructor</label>
+            <select id="instructorId" name="instructorId" required>
+                <option value="">Select an instructor</option>
+                {% for person in instructors %}
+                    <option value="{{ person.id }}">{{ person.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="studentName">Your Name</label>
+            <input id="studentName" name="name" type="text" required />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required />
+            <label for="studentAge">Student Age</label>
+            <input id="studentAge"
+                   name="studentAge"
+                   type="text"
+                   placeholder="Example: 10, Teen, Adult" />
+            <label for="availability">Best availability</label>
+            <input id="availability"
+                   name="availability"
+                   type="text"
+                   placeholder="Weeknights after 5pm, Saturday morning, etc." />
+            <label for="message">Anything we should know?</label>
+            <textarea id="message"
+                      name="message"
+                      rows="4"
+                      placeholder="Goals, experience, preferred style"></textarea>
+            <button type="submit" class="btn btn-primary">Send Booking Request</button>
+        </form>
+        <h3>Pay now with Stripe</h3>
+        <p class="muted">Optional: prepay your first lesson securely.</p>
+        <div class="actions">
+            <button class="btn btn-secondary"
+                    data-stripe-checkout
+                    data-service-id="{{ service.id }}">Pay for {{ service.name }}</button>
+        </div>
+    </article>
+</section>
+<script>
+  async function checkoutWithStripe(serviceId) {
+    const response = await fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ serviceId })
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      alert(error.message || 'Unable to start checkout right now.');
+      return;
+    }
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url;
+      return;
+    }
+
+    alert('Checkout link was not returned by the payment server.');
+  }
+
+  document.querySelectorAll('[data-stripe-checkout]').forEach((button) => {
+    button.addEventListener('click', () => {
+      checkoutWithStripe(button.dataset.serviceId);
+    });
+  });
+</script>

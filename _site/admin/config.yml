@@ -1,0 +1,78 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Site Content"
+    files:
+      - name: "business"
+        label: "Business Details"
+        file: "src/_data/site.json"
+        format: "json"
+        fields:
+          - { label: "Business name", name: "name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "City or service area", name: "city", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+      - name: "homepage"
+        label: "Homepage"
+        file: "src/_data/home.json"
+        format: "json"
+        fields:
+          - { label: "Hero eyebrow", name: "heroEyebrow", widget: "string" }
+          - { label: "Hero heading", name: "heroTitle", widget: "string" }
+          - { label: "Hero text", name: "heroText", widget: "text" }
+          - { label: "Hero image", name: "heroImage", widget: "image" }
+          - { label: "About heading", name: "aboutTitle", widget: "string" }
+          - { label: "About text", name: "aboutText", widget: "text" }
+          - { label: "Contact heading", name: "contactTitle", widget: "string" }
+          - { label: "Contact text", name: "contactText", widget: "text" }
+      - name: "lessons"
+        label: "Lessons"
+        file: "src/_data/services.json"
+        format: "json"
+        fields:
+          - label: "Lessons"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "ID / URL slug", name: "id", widget: "string", hint: "Lowercase letters and hyphens only. Do not change after publishing." }
+              - { label: "Lesson name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Duration", name: "duration", widget: "string" }
+              - { label: "Price in cents", name: "price", widget: "number", value_type: "int", min: 0, hint: "Enter 6500 for $65.00" }
+              - { label: "Currency", name: "currency", widget: "select", options: ["usd", "cad", "eur", "gbp"], default: "usd" }
+              - label: "Instructors"
+                name: "instructorIds"
+                widget: "list"
+                field:
+                  label: "Instructor"
+                  name: "id"
+                  widget: "relation"
+                  collection: "settings"
+                  file: "instructors"
+                  search_fields: ["items.*.name"]
+                  value_field: "items.*.id"
+                  display_fields: ["items.*.name"]
+              - { label: "Stripe note", name: "stripePriceHint", widget: "hidden", default: "Price managed in the CMS" }
+      - name: "instructors"
+        label: "Instructors"
+        file: "src/_data/staff.json"
+        format: "json"
+        fields:
+          - label: "Instructors"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.title}}"
+            fields:
+              - { label: "ID / URL slug", name: "id", widget: "string", hint: "Lowercase letters and hyphens only. Match this ID in assigned lessons." }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Biography", name: "bio", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }

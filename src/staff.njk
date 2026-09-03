@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+title: Staff | Tubonamer Music
+description: Meet the instructors at Tubonamer Music.
+---
+
+<section class="page-head">
+    <h1>Our Instructors</h1>
+    <p>Experienced teachers helping every student build skills and confidence.</p>
+</section>
+<div class="grid two">
+    {% for person in staff.items %}
+        <article id="{{ person.id }}" class="card profile">
+            <img src="{{ person.photo }}"
+                 alt="Portrait illustration of {{ person.name }}"
+                 height="340" />
+            <h2>{{ person.name }}</h2>
+            <p class="muted">{{ person.title }}</p>
+            <p>{{ person.bio }}</p>
+            {% set teaches = services.items | servicesByInstructor(person.id) %}
+            {% if teaches.length %}
+                <h3>Teaches</h3>
+                <ul>
+                    {% for service in teaches %}
+                        <li><a href="/services/#{{ service.id }}">{{ service.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p class="actions">
+                <a class="btn btn-primary" href="/staff/{{ person.id }}/">View Profile and Book</a>
+            </p>
+        </article>
+    {% endfor %}
+</div>

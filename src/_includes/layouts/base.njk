@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{ title or site.name }}</title>
+        <meta name="description" content="{{ description or site.tagline }}" />
+        <meta name="keywords"
+              content="music lessons, piano lessons, guitar lessons, voice coaching, songwriting" />
+        <link rel="stylesheet" href="/assets/styles.css" />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container header-wrap">
+                <a class="brand" href="/">
+                    <span class="brand-mark" aria-hidden="true">B</span>
+                    <span>{{ site.name }}</span>
+                </a>
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a href="/#about">About</a>
+                    <a href="/services/">Lessons</a>
+                    <a href="/staff/">Instructors</a>
+                    <a href="/#contact">Contact</a>
+                    <a class="nav-cta" href="/services/">Book a lesson</a>
+                </nav>
+            </div>
+        </header>
+        <main>
+            {{ content | safe }}
+        </main>
+        <footer class="site-footer">
+            <div class="container footer-wrap">
+                <div>
+                    <a class="footer-brand" href="/">{{ site.name }}</a>
+                    <p>{{ site.tagline }}</p>
+                </div>
+                <div>
+                    <p>{{ site.city }}</p>
+                    <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+                    <p><a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone }}</a></p>
+                </div>
+                <nav aria-label="Footer navigation">
+                    <a href="/services/">Lessons</a>
+                    <a href="/staff/">Instructors</a>
+                    <a href="/admin/">Client login</a>
+                </nav>
+            </div>
+        </footer>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <script>
+          if (window.netlifyIdentity) {
+            window.netlifyIdentity.on('init', (user) => {
+              if (!user && window.location.hash.startsWith('#invite_token=')) {
+                window.netlifyIdentity.open('signup');
+              }
+            });
+          }
+        </script>
+    </body>
+</html>

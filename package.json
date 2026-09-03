@@ -1,0 +1,21 @@
+{
+  "name": "bonamer_music",
+  "version": "1.0.0",
+  "description": "Tubonamer Music website built with Eleventy.",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "clean": "rm -rf _site",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "dotenv": "^17.4.2",
+    "stripe": "^22.5.0"
+  }
+}

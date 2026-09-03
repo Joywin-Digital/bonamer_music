@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="John Lennon portrait illustration">
+  <rect width="400" height="240" fill="#f1dfc5"/>
+  <circle cx="200" cy="95" r="48" fill="#e6b98d"/>
+  <rect x="132" y="146" width="136" height="70" rx="30" fill="#6d8e81"/>
+  <path d="M150 90c20-45 85-45 105 0" fill="#6a4331"/>
+  <circle cx="184" cy="95" r="4" fill="#4b2f24"/>
+  <circle cx="216" cy="95" r="4" fill="#4b2f24"/>
+  <path d="M184 114c11 8 21 8 32 0" stroke="#8f4f3f" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

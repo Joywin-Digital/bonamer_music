@@ -1,0 +1,79 @@
+---
+layout: layouts/base.njk
+title: Services | Tubonamer Music
+description: Music lesson services offered by Tubonamer Music.
+---
+
+<section class="page-head">
+    <h1>Services Offered</h1>
+    <p>Choose a program and connect directly with the instructor.</p>
+</section>
+<div class="stack">
+    {% for service in services.items %}
+        <article id="{{ service.id }}" class="card service">
+            <div class="service-top">
+                <div>
+                    <h2>{{ service.name }}</h2>
+                    <p class="muted">{{ service.duration }}</p>
+                </div>
+                <p class="price">${{ (service.price / 100) | round(2) }}</p>
+            </div>
+            <p>{{ service.description }}</p>
+            {% set instructors = staff.items | staffByIds(service.instructorIds) %}
+            {% if instructors.length %}
+                <h3>
+                    Instructor
+                    {% if instructors.length > 1 %}s{% endif %}
+                </h3>
+                <ul>
+                    {% for person in instructors %}
+                        <li><a href="/staff/{{ person.id }}/">{{ person.name }}</a> · {{ person.title }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="actions">
+                <a class="btn btn-secondary" href="/services/{{ service.id }}/book/">Book This Service</a>
+                <button class="btn btn-primary"
+                        data-stripe-checkout
+                        data-service-id="{{ service.id }}">Book With Stripe</button>
+                {% for provider in payments.providers %}
+                    {% if provider.type == "hosted-link" %}
+                        <a class="btn btn-secondary"
+                           href="{{ provider.checkoutUrl }}"
+                           target="_blank"
+                           rel="noreferrer">Pay with {{ provider.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </article>
+    {% endfor %}
+</div>
+<script>
+  async function checkoutWithStripe(serviceId) {
+    const response = await fetch('/.netlify/functions/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ serviceId })
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      alert(error.message || 'Unable to start checkout right now.');
+      return;
+    }
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.href = data.url;
+      return;
+    }
+
+    alert('Checkout link was not returned by the payment server.');
+  }
+
+  document.querySelectorAll('[data-stripe-checkout]').forEach((button) => {
+    button.addEventListener('click', () => {
+      checkoutWithStripe(button.dataset.serviceId);
+    });
+  });
+</script>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Stylized music studio scene">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4E0754"/>
+      <stop offset="45%" stop-color="#90279C"/>
+      <stop offset="100%" stop-color="#DE3A11"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.2" cy="0.2" r="0.6">
+      <stop offset="0%" stop-color="#FFF3C4" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFF3C4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.8" cy="0.8" r="0.6">
+      <stop offset="0%" stop-color="#FFD0B5" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#FFD0B5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <rect width="1400" height="900" fill="url(#glow1)"/>
+  <rect width="1400" height="900" fill="url(#glow2)"/>
+
+  <g opacity="0.35" fill="none" stroke="#FCE588" stroke-width="8">
+    <path d="M80 670 C 250 520, 350 760, 520 620 S 820 550, 1040 640 S 1220 760, 1340 670"/>
+    <path d="M60 740 C 230 590, 330 830, 500 690 S 800 620, 1020 710 S 1200 830, 1320 740"/>
+  </g>
+
+  <g transform="translate(230,180)">
+    <rect x="0" y="230" width="210" height="290" rx="18" fill="#102A43" opacity="0.65"/>
+    <rect x="18" y="248" width="174" height="254" rx="10" fill="#F0F4F8" opacity="0.92"/>
+    <g stroke="#243B53" stroke-width="2">
+      <line x1="35" y1="268" x2="175" y2="268"/>
+      <line x1="35" y1="290" x2="175" y2="290"/>
+      <line x1="35" y1="312" x2="175" y2="312"/>
+      <line x1="35" y1="334" x2="175" y2="334"/>
+      <line x1="35" y1="356" x2="175" y2="356"/>
+    </g>
+  </g>
+
+  <g transform="translate(780,140)">
+    <ellipse cx="180" cy="430" rx="180" ry="160" fill="#102A43" opacity="0.45"/>
+    <path d="M90 130 C 200 30, 360 60, 350 190 C 340 300, 220 330, 130 300 C 30 265, 20 190, 90 130Z" fill="#FFFBEA" opacity="0.92"/>
+    <path d="M240 176 C 236 310, 234 412, 234 490" stroke="#7C1A87" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="195" cy="495" r="34" fill="#F35627"/>
+    <circle cx="275" cy="530" r="42" fill="#F9703E"/>
+  </g>
+</svg>

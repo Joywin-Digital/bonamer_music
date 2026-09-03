@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "id": "john-lennon",
+      "name": "John Lennon",
+      "title": "Founder and Piano Instructor",
+      "bio": "John specializes in beginner and intermediate piano with a focus on confidence, rhythm, and musical expression.",
+      "photo": "/assets/images/person_placeholder.jpeg"
+    },
+    {
+      "id": "paul-mccartney",
+      "name": "Paul McCartney",
+      "title": "Guitar and Songwriting Coach",
+      "bio": "Paul helps students build technique while writing and performing songs they are proud of.",
+      "photo": "/assets/images/person_placeholder.jpeg"
+    },
+    {
+      "id": "kurt-bonamer",
+      "name": "Kurt Bonamer",
+      "title": "Tuba and fun guy",
+      "bio": "Kurt teaches healthy tuba technique, stage presence, and audition preparation.",
+      "photo": "/assets/images/person_placeholder.jpeg"
+    }
+  ]
+}

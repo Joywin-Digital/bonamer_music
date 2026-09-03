@@ -1,0 +1,24 @@
+{
+  "providers": [
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "description": "Card payments and secure checkout.",
+      "type": "integrated"
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "description": "Pay with PayPal or major cards.",
+      "type": "hosted-link",
+      "checkoutUrl": "https://www.paypal.com/"
+    },
+    {
+      "id": "square",
+      "name": "Square",
+      "description": "Alternative hosted checkout option.",
+      "type": "hosted-link",
+      "checkoutUrl": "https://squareup.com/us/en"
+    }
+  ]
+}

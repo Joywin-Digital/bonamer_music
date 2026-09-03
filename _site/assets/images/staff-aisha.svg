@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Kurt Bonamer portrait illustration">
+  <rect width="400" height="240" fill="#e8ebd8"/>
+  <circle cx="200" cy="95" r="48" fill="#e6bf9d"/>
+  <rect x="132" y="146" width="136" height="70" rx="30" fill="#697b53"/>
+  <path d="M152 95c15-55 80-55 96 0" fill="#3b3431"/>
+  <circle cx="184" cy="95" r="4" fill="#3b3431"/>
+  <circle cx="216" cy="95" r="4" fill="#3b3431"/>
+  <path d="M184 114c11 8 21 8 32 0" stroke="#815446" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>
