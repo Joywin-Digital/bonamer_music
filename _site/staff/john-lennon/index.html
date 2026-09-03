@@ -1,71 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>John Lennon | Tubonamer Music</title>
-        <meta name="description" content="Book lessons with John Lennon at Tubonamer Music." />
-        <meta name="keywords"
-              content="music lessons, piano lessons, guitar lessons, voice coaching, songwriting" />
-        <link rel="stylesheet" href="/assets/styles.css" />
-    </head>
-    <body>
-        <header class="site-header">
-            <div class="container header-wrap">
-                <a class="brand" href="/">
-                    <span class="brand-mark" aria-hidden="true">B</span>
-                    <span>Tubonamer Music</span>
-                </a>
-                <nav class="site-nav" aria-label="Main navigation">
-                    <a href="/#about">About</a>
-                    <a href="/services/">Lessons</a>
-                    <a href="/staff/">Instructors</a>
-                    <a href="/#contact">Contact</a>
-                    <a class="nav-cta" href="/services/">Book a lesson</a>
-                </nav>
-            </div>
-        </header>
-        <main>
-            
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>John Lennon | Tubonamer Music</title>
+    <meta
+      name="description"
+      content="Book lessons with John Lennon at Tubonamer Music."
+    />
+    <meta
+      name="keywords"
+      content="music lessons, piano lessons, guitar lessons, voice coaching, songwriting"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-wrap">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">B</span>
+          <span>Tubonamer Music</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/#about">About</a>
+          <a href="/services/">Lessons</a>
+          <a href="/staff/">Instructors</a>
+          <a href="/#contact">Contact</a>
+          <a class="nav-cta" href="/services/">Book a lesson</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="page-head">
+        <p><a href="/staff/">Back to all instructors</a></p>
+        <h1>John Lennon</h1>
+        <p class="muted">Founder and Piano Instructor</p>
+      </section>
+      <section class="grid two profile-detail">
+        <article class="card">
+          <img
+            src="/assets/images/person_placeholder.jpeg"
+            alt="Portrait illustration of John Lennon"
+            width="400"
+            height="240"
+          />
+          <p>
+            John specializes in beginner and intermediate piano with a focus on
+            confidence, rhythm, and musical expression.
+          </p>
 
-<section class="page-head">
-    <p><a href="/staff/">Back to all instructors</a></p>
-    <h1>John Lennon</h1>
-    <p class="muted">Founder and Piano Instructor</p>
-</section>
-<section class="grid two profile-detail">
-    <article class="card">
-        <img src="/assets/images/person_placeholder.jpeg"
-             alt="Portrait illustration of John Lennon"
-             width="400"
-             height="240" />
-        <p>John specializes in beginner and intermediate piano with a focus on confidence, rhythm, and musical expression.</p>
-        
-            <h2>Services with John Lennon</h2>
-            <ul>
-                
-                    <li><a href="/services/piano-lessons/book/">Private Piano Lessons</a> · $65</li>
-                
-            </ul>
-        
-    </article>
-    <article class="card">
-        <h2>Request a Lesson</h2>
-        <p class="muted">Send a booking request and we will follow up to confirm schedule and first lesson details.</p>
-        <form class="booking-form"
-              name="lesson-booking"
-              method="post"
-              action="/booking-thanks/"
-              data-netlify="true"
-              netlify-honeypot="bot-field">
+          <h2>Services with John Lennon</h2>
+          <ul>
+            <li>
+              <a href="/services/piano-lessons/book/">Private Piano Lessons</a>
+              · $65
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Request a Lesson</h2>
+          <p class="muted">
+            Send a booking request and we will follow up to confirm schedule and
+            first lesson details.
+          </p>
+          <form
+            class="booking-form"
+            name="lesson-booking"
+            method="post"
+            action="/booking-thanks/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
             <input type="hidden" name="form-name" value="lesson-booking" />
             <input type="hidden" name="instructorId" value="john-lennon" />
             <input type="hidden" name="instructorName" value="John Lennon" />
             <p class="hidden-field">
-                <label>
-                    Do not fill this out if you are human:
-                    <input name="bot-field" />
-                </label>
+              <label>
+                Do not fill this out if you are human:
+                <input name="bot-field" />
+              </label>
             </p>
             <label for="name">Your Name</label>
             <input id="name" name="name" type="text" required />
@@ -75,94 +88,108 @@
             <input id="phone" name="phone" type="tel" required />
             <label for="serviceId">Service</label>
             <select id="serviceId" name="serviceId" required>
-                <option value="">Select a service</option>
-                
-                    <option value="piano-lessons">Private Piano Lessons</option>
-                
+              <option value="">Select a service</option>
+
+              <option value="piano-lessons">Private Piano Lessons</option>
             </select>
             <label for="studentAge">Student Age</label>
-            <input id="studentAge"
-                   name="studentAge"
-                   type="text"
-                   placeholder="Example: 10, Teen, Adult" />
+            <input
+              id="studentAge"
+              name="studentAge"
+              type="text"
+              placeholder="Example: 10, Teen, Adult"
+            />
             <label for="message">Anything we should know?</label>
-            <textarea id="message"
-                      name="message"
-                      rows="4"
-                      placeholder="Goals, experience, schedule preferences"></textarea>
-            <button type="submit" class="btn btn-primary">Send Booking Request</button>
-        </form>
-        
-            <h3>Pay now with Stripe</h3>
-            <p class="muted">Optional: prepay a first lesson using secure checkout.</p>
-            <div class="actions">
-                
-                    <button class="btn btn-secondary"
-                            data-stripe-checkout
-                            data-service-id="piano-lessons">Pay for Private Piano Lessons</button>
-                
-            </div>
-        
-    </article>
-</section>
-<script>
-  async function checkoutWithStripe(serviceId) {
-    const response = await fetch('/.netlify/functions/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ serviceId })
-    });
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Goals, experience, schedule preferences"
+            ></textarea>
+            <button type="submit" class="btn btn-primary">
+              Send Booking Request
+            </button>
+          </form>
 
-    if (!response.ok) {
-      const error = await response.json().catch(() => ({}));
-      alert(error.message || 'Unable to start checkout right now.');
-      return;
-    }
+          <h3>Pay now with Stripe</h3>
+          <p class="muted">
+            Optional: prepay a first lesson using secure checkout.
+          </p>
+          <div class="actions">
+            <button
+              class="btn btn-secondary"
+              data-stripe-checkout
+              data-service-id="piano-lessons"
+            >
+              Pay for Private Piano Lessons
+            </button>
+          </div>
+        </article>
+      </section>
+      <script>
+        async function checkoutWithStripe(serviceId) {
+          const response = await fetch(
+            '/.netlify/functions/create-checkout-session',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ serviceId })
+            }
+          )
 
-    const data = await response.json();
-    if (data.url) {
-      window.location.href = data.url;
-      return;
-    }
-
-    alert('Checkout link was not returned by the payment server.');
-  }
-
-  document.querySelectorAll('[data-stripe-checkout]').forEach((button) => {
-    button.addEventListener('click', () => {
-      checkoutWithStripe(button.dataset.serviceId);
-    });
-  });
-</script>
-
-        </main>
-        <footer class="site-footer">
-            <div class="container footer-wrap">
-                <div>
-                    <a class="footer-brand" href="/">Tubonamer Music</a>
-                    <p>Joyful, practical music instruction for all ages.</p>
-                </div>
-                <div>
-                    <p>Your City</p>
-                    <p><a href="mailto:hello@bonamermusic.com">hello@bonamermusic.com</a></p>
-                    <p><a href="tel:(555)123-4567">(555) 123-4567</a></p>
-                </div>
-                <nav aria-label="Footer navigation">
-                    <a href="/services/">Lessons</a>
-                    <a href="/staff/">Instructors</a>
-                    <a href="/admin/">Client login</a>
-                </nav>
-            </div>
-        </footer>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-        <script>
-          if (window.netlifyIdentity) {
-            window.netlifyIdentity.on('init', (user) => {
-              if (!user && window.location.hash.startsWith('#invite_token=')) {
-                window.netlifyIdentity.open('signup');
-              }
-            });
+          if (!response.ok) {
+            const error = await response.json().catch(() => ({}))
+            alert(error.message || 'Unable to start checkout right now.')
+            return
           }
-        </script>
-    </body>
+
+          const data = await response.json()
+          if (data.url) {
+            window.location.href = data.url
+            return
+          }
+
+          alert('Checkout link was not returned by the payment server.')
+        }
+
+        document.querySelectorAll('[data-stripe-checkout]').forEach(button => {
+          button.addEventListener('click', () => {
+            checkoutWithStripe(button.dataset.serviceId)
+          })
+        })
+      </script>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a class="footer-brand" href="/">Tubonamer Music</a>
+          <p>Joyful, practical music instruction for all ages.</p>
+        </div>
+        <div>
+          <p>Your City</p>
+          <p>
+            <a href="mailto:hello@tubonamermusic.com"
+              >hello@tubonamermusic.com</a
+            >
+          </p>
+          <p><a href="tel:(555)123-4567">(555) 123-4567</a></p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="/services/">Lessons</a>
+          <a href="/staff/">Instructors</a>
+          <a href="/admin/">Client login</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', user => {
+          if (!user && window.location.hash.startsWith('#invite_token=')) {
+            window.netlifyIdentity.open('signup')
+          }
+        })
+      }
+    </script>
+  </body>
 </html>
