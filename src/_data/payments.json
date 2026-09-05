@@ -5,7 +5,9 @@
       "name": "Stripe",
       "description": "Card payments and secure checkout.",
       "type": "integrated"
-    },
+    }
+  ],
+  "delayed-providers": [
     {
       "id": "paypal",
       "name": "PayPal",
