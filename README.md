@@ -12,6 +12,8 @@ Marketing site for a local music teaching business built with Eleventy (11ty), i
 - Stripe checkout integration via Netlify Function
 - Optional alternate payment provider links (PayPal and Square placeholders)
 
+Client handoff instructions: [Payment Setup Guide](CLIENT_PAYMENT_SETUP.md)
+
 ## Quick Start
 
 1. Install dependencies:
